@@ -1,0 +1,25 @@
+{
+  "name": "BookLoversBackEnd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/loader.js",
+  "scripts": {
+    "dev": "nodemon",
+    "production": "pm2 start src/loader.js --name BookLovers"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "nodemon": "^1.12.1",
+    "pm2": "^2.7.2"
+  },
+  "dependencies": {
+    "mongoose": "^5.0.3",
+    "node-restful": "^0.2.6"
+  }
+}
