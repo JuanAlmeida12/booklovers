@@ -4,14 +4,12 @@ import 'modules/font-awesome/css/font-awesome.min.css'
 
 import React from 'react'
 
-import SideBar from '../common/sidebar/sidebar'
-import NavBar from '../common/navbar/navbar'
+import SideNav from '../common/sidenav/sidenav'
+import Routes from './routes'
 
 export default props => (
-    <div className='container-fluid'>
-        <div className='row'>
-            <NavBar />
-            <SideBar />
-        </div>
+    <div className='container'>
+        <SideNav />
+        <Routes />
     </div>
 )
