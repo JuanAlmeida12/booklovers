@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 const User = require('./user')
 const authSecret = require('../../config/middleware/auth/auth.config')
 
-User.methods(['get', 'post'])
+User.methods(['get', 'post', 'put'])
 User.updateOptions({new: true, runValidators: true})
 
 User.route('login', ['post'] ,( req, res, next ) => {
@@ -26,7 +26,7 @@ User.route('login', ['post'] ,( req, res, next ) => {
                 message:'Wrong Password',
                 token: null,
                 user: null })
-        const token = jwt.sign({ id: user.email }, authSecret.secret, {
+        const token = jwt.sign({ id: user._id }, authSecret.secret, {
             expiresIn: 86400
         })
 

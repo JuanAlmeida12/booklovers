@@ -1,45 +1,53 @@
-import axios from 'axios'
-import consts from '../common/consts'
+import GoogleBooks from 'google-books-search'
 
-const URL = `${consts.API_URL}/books`
+const booksOptions = {
+    offset: 0,
+    limit: 39,
+    type: 'books',
+    order: 'relevance',
+    lang: 'pt'
+};
+
 
 export const changeSearch = event => ({
     type: 'TITLE_CHANGED',
     payload: event.target.value
 })
 
-export const checkAdd = event => ({
-    type: 'ADD_MODE',
-    payload: event.target.value
+export const moreInfo = book => ({
+    type: 'MORE_INFO',
+    payload: book
 })
+
+export const fetchBook = (book) => {
+    return (dispatch) => { 
+        dispatch({ type: 'FETCHING_BOOK' })
+        GoogleBooks.lookup(book, (error, result) => {
+            console.log(result)
+            dispatch({type: 'BOOK_FETCHED', payload: result})
+        })
+    }
+}
+
+
 
 export const search = () => {
     return (dispatch, getState) => {
-        const title = getState().book.title
+        const title = getState().book.search_title 
+        /* 
         const search = title ? `&title__regex=/${title}/` : ''
         const request = axios.get(`${URL}?sort=-createdAt${search}`)
-            .then(resp => dispatch({type: 'BOOK_SEARCHED', payload: resp.data}))
-    }
-}
-
-export const add = (book) => {
-    return dispatch => {
-        axios.post(URL, { book })
-            .then(resp => dispatch(clear()))
-            .then(resp => dispatch(search()))
-    }
-}
-
-export const edit = (book) => {
-    return dispatch => {
-        axios.put(`${URL}/${book._id}`, { book })
-            .then(resp => dispatch(search()))
-    }
-}
-
-export const remove = (book) => {
-    return dispatch => {
-        axios.delete(`${URL}/${book._id}`)
-            .then(resp => dispatch(search()))
+            .then((resp, error) => {
+                if(error) { 
+                    console.log(error) 
+                    return
+                }
+                console.log(resp.data) 
+                dispatch({type: 'BOOK_SEARCHED', payload: resp.data})
+            }) */
+            GoogleBooks.search(title, booksOptions, (err, result) =>{
+                console.log(result)
+                dispatch({type: 'BOOK_SEARCHED', payload: result})
+            })
     }
 }
