@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { Modal, Input } from 'react-materialize'
+import { Modal, Input, Button,Icon } from 'react-materialize'
 
 import { register } from '../post/postActions'
 import { searchClub } from './clubActions'
@@ -53,30 +53,27 @@ class ShareButton extends Component {
     }   
 
     render() {
-        return (<div>            
-            <Modal
-                header='Compartilhar no grupo'
-                trigger={<a className="waves-effect waves-teal btn">Compartilhar</a>}>
-                <div>
-                    <div style={{ marginTop: '40px' }}>
-                        <label>Selecione o Clube</label>
-                        <Input type='select' onChange={this.handleChangeClub}>
+        return (  
+            <div>
+                <div className='share-box'>
+                    <div >
+                        <Input type='select' label='Selecione o Clube' onChange={this.handleChangeClub}>
                             <option value="" disabled selected>Selecione o Clube</option>
                             {this.renderClupOptions()}
                         </Input>
                     </div>
                     <textarea
-                            onChange={this.handleChangeMessage}
-                            className={"materialize-textarea"}
-                            placeholder={"Digite a mensagem do Post"}
-                            type={'textarea'} />       
-                    
+                        onChange={this.handleChangeMessage}
+                        className={"materialize-textarea"}
+                        placeholder={"Digite a mensagem do Post"}
+                        type={'textarea'} />       
+                            
                     <button className="btn waves-effect waves-light" onClick={this.handleAdd}>Compartilhar
                         <i className="material-icons right">send</i>
                     </button>
                 </div>
-            </Modal>
-        </div>)
+            </div>
+        )
     }
 }
 

@@ -2,10 +2,14 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 const User = require('./user')
+const auth = require('../../config/middleware/auth/auth')
 const authSecret = require('../../config/middleware/auth/auth.config')
 
-User.methods(['get', 'post', 'put'])
+User.methods(['get', 'post', 'put', 'delete'])
 User.updateOptions({new: true, runValidators: true})
+
+User.before('put', auth)
+User.before('delete', auth)
 
 User.route('login', ['post'] ,( req, res, next ) => {
     User.findOne({ email: req.body.email }, (err, user) => {

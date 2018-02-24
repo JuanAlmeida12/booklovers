@@ -26,7 +26,7 @@ class BookSearchForm extends Component {
         const { search, title } = this.props
         return (
             <div >
-                    <Row >
+                    <div className='row'>
                         <div className='col s8 push-s3'>
                             <input
                                 className='col s5'
@@ -36,7 +36,7 @@ class BookSearchForm extends Component {
                                 placeholder='Busca'/>
                             <a onClick={() => search()} className="waves-effect waves-teal btn" style={{ marginTop:'5px', marginLeft:'10px' }}><i className="material-icons">search</i></a>
                         </div>
-                    </Row >
+                    </div >
             </div>
         )
     }

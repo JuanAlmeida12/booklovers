@@ -11,6 +11,15 @@ Comment.before('delete', auth)
 Comment.route('populated', ['get'], (req, res, next) => {
     const id = req.query.id
     const type = req.query.type
+
+    if(!id) {
+        return res.status(400).send({message:'id is Required'})
+    }
+
+    if(!type) {
+        return res.status(400).send({message:'type is Required'})
+    }
+
     let query
     if(type === 'Book') {
         query = {
@@ -22,7 +31,6 @@ Comment.route('populated', ['get'], (req, res, next) => {
         }
     }
 
-    console.log(type)
     Comment.find(query).sort([['createdAt' ,-1]]).populate('owner').exec( (err, comments) =>{
         if(err) {
             res.status(400).send(err)

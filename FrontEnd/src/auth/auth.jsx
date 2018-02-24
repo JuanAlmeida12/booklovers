@@ -8,9 +8,10 @@ import If from '../common/if'
 import Input from '../common/form/input'
 import Messages from '../common/msg'
 
-class Auth extends Component {
+export class Auth extends Component {
     constructor(props) {
         super(props)
+        this.changeMode = this.changeMode.bind(this)
         this.state = {loginMode: true}
     }
     
@@ -38,7 +39,7 @@ class Auth extends Component {
                         <div className="form-box">
                             <If test={loginMode}>
                                 <form onSubmit={handleSubmit(v => this.onSubmit(v))}>
-                                    <Field component={Input} name="email" type="text" placeholder="Email" />
+                                    <Field component={Input} name="email" type="text" placeholder="Email" id='email-login' />
                                     <Field component={Input} name="password" type="password" placeholder="Senha" />
                                     <button className="btn waves-effect waves-light" type="submit">Login
                                         <i className="material-icons right">send</i>

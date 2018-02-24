@@ -1,0 +1,4 @@
+O projeto baseia-se em uma das ideias do post do medium (https://medium.freecodecamp.org/every-time-you-build-a-to-do-list-app-a-puppy-dies-505b54637a5d).
+ A ideia do projeto basicamente é uma central de clubes do livro, onde o usuário pode participar de vários clubes e discussões sobres determinados livros. 
+O backend e frontend foram construídos usando Node.js e React como sugeridos.
+Iniciei o desenvolvimento construído a API, para montar a API utilizei um banco de dados não relacional, MongoDb, e a biblioteca “node-restful”, que simplifica a construção da API. Após a construção da API implementei o sistema de autenticação e autorização de uso da API, finalizando assim o desenvolvimento do backend. No frontend utilizei React com o Redux para gerenciar estados globais. Utilizei a API do Google Books para buscar e recuperar informações de livros , optei por usar essa API de livros  por  já conter um volume considerado de livros já cadastrados.   

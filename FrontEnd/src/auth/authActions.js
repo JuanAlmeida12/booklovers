@@ -12,7 +12,7 @@ export function register(values) {
 
 function submit(values, url) {
     return dispatch => {
-        axios.post(url, values)
+        return axios.post(url, values)
             .then(resp => {
                 dispatch([
                     {type: 'USER_LOGIN', payload: resp.data}

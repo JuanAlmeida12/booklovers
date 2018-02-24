@@ -11,10 +11,7 @@ Wish.before('delete', auth)
 Wish.route('verify', ['get'], (req, res, next) => {
     const user_id = req.query.user_id
     const book_id = req.query.book_id
-
-    console.log(user_id)
-    console.log(book_id)
-
+    
     Wish.findOne({ owner: user_id, book: book_id }, (err, wish) => {
         if(err){
             console.log(err.message)

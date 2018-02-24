@@ -191,3 +191,10 @@ html,body{
     margin-right: 12px;
     margin-top: 10px
 }
+
+.share-box{
+    border-radius: 8%;
+    background-color: rgba(73, 73, 73, 0.082);
+    padding: 15px
+
+}

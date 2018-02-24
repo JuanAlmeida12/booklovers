@@ -47,9 +47,11 @@ class BookInfo extends Component {
                 <div className='row'>
                     <div className='col s3 offset-s4'>
                         <WishButton />
-                        <label>Compartilhe em um grupo</label>
-                        <ShareButton book={this.props.current_book}/>
-                    </div>
+                        <label>Compartilhe em um grupo</label>                        
+                    </div>      
+                    <div className='col s6 offset-s3'>
+                        <ShareButton book={this.props.current_book} />
+                    </div>              
                 </div>
                 <div className='divider'> </div>
                 <h5 style={{ marginLeft: '15px' }}>Comentários</h5>
